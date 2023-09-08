@@ -1,7 +1,7 @@
 migrate:
 	docker-compose exec web python manage.py migrate
 
-makemigrations:
+migrations:
 	docker-compose exec web python manage.py makemigrations
 
 suser:
@@ -24,3 +24,6 @@ up:
 
 test:
 	docker-compose exec web python manage.py test
+
+populate_rates:
+	docker-compose exec web python manage.py populate_rates_history

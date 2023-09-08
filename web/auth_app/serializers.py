@@ -15,8 +15,6 @@ error_messages = {
 
 
 class SignUpSerializer(serializers.Serializer):
-    # first_name = serializers.CharField(max_length=100, required=True)
-    # last_name = serializers.CharField(max_length=100, required=True)
     email = serializers.EmailField(required=True)
     password1 = serializers.CharField(write_only=True, min_length=8)
     password2 = serializers.CharField(write_only=True, min_length=8)
