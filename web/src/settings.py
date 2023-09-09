@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 from .additional_settings.jwt_settings import *
+from .additional_settings.celery_settings import *
 
 # import environ
 #

@@ -14,17 +14,38 @@ services:
       - docker/dev/env/.dev.env
     depends_on:
       - db
-#      - redis
+      - redis
   db:
     image: postgres:13.0-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - docker/dev/env/.db.env
-#  redis:
-#    image: redis:6.0-rc3-buster
-#    ports:
-#      - "6379:6379"
+  redis:
+    image: redis:6.0.6-alpine
+  celery:
+    build:
+      context: .
+      dockerfile: docker/dev/web/Dockerfile
+    command: celery -A src worker -l info
+    volumes:
+      - ./web/:/usr/src/web/
+    env_file:
+      - docker/dev/env/.dev.env
+    depends_on:
+      - redis
+  celery-beat:
+    build:
+      context: .
+      dockerfile: docker/dev/web/Dockerfile
+    command: celery -A src beat -l info
+    volumes:
+      - ./web/:/usr/src/web/
+    env_file:
+      - docker/dev/env/.dev.env
+    depends_on:
+      - redis
+
 
 volumes:
   postgres_data:
