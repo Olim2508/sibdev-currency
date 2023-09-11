@@ -10,7 +10,7 @@ class ExchangeRateItemAdmin(admin.ModelAdmin):
         'num_code',
         'char_code',
         'nominal',
-        'exchange_rate',
+        'value',
         'previous_rate',
         'date',
     )

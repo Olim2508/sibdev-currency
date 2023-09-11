@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Currency, TrackedCurrency
+from .models import TrackedCurrency, ExchangeRateItem
 from .services import TrackedCurrencyService
 
 
@@ -12,4 +12,11 @@ class TrackedCurrencySerializer(serializers.ModelSerializer):
     class Meta:
         model = TrackedCurrency
         exclude = ("user",)
+
+
+class RatesSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ExchangeRateItem
+        fields = ["id", "date", "char_code", "value"]
 

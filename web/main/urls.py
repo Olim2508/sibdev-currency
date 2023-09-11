@@ -8,6 +8,7 @@ app_name = 'main'
 
 router = DefaultRouter()
 router.register("currency", views.CurrencyViewSet, basename="currency")
+router.register("rates", views.RatesViewSet, basename="rates")
 
 urlpatterns = [
 

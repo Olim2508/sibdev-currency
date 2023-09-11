@@ -30,7 +30,7 @@ class Command(BaseCommand):
                 num_code=rate_info.get('NumCode', ''),
                 char_code=rate_info.get('CharCode', ''),
                 nominal=rate_info.get('Nominal', ''),
-                exchange_rate=rate_info.get('Value', ''),
+                value=rate_info.get('Value', ''),
                 previous_rate=rate_info.get('Previous', ''),
                 date=date,
             )

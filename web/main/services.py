@@ -1,7 +1,12 @@
 import json
 import os
+from typing import List
 
 from main.models import Currency, TrackedCurrency
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
 
 
 class CurrencyService:
@@ -25,3 +30,7 @@ class TrackedCurrencyService:
     @staticmethod
     def create_tracked_currency(**data):
         return TrackedCurrency.objects.create(**data)
+
+    @staticmethod
+    def get_user_tracked_currencies_code_list(user: User) -> List[int]:
+        return TrackedCurrency.objects.filter(user=user).values_list("currency__char_code")
