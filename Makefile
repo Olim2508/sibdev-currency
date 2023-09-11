@@ -10,6 +10,9 @@ suser:
 logs:
 	docker-compose logs -f web
 
+celery-logs:
+	docker-compose logs -f celery
+
 down:
 	docker-compose down
 

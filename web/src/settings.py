@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 from .additional_settings.jwt_settings import *
 from .additional_settings.celery_settings import *
+from .additional_settings.swagger_settings import *
 
 # import environ
 #
@@ -171,3 +172,6 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+
+SUPERUSER_EMAIL = os.environ.get('SUPERUSER_EMAIL')
+SUPERUSER_PASSWORD = os.environ.get('SUPERUSER_PASSWORD')

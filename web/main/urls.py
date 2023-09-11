@@ -7,7 +7,7 @@ from . import views
 app_name = 'main'
 
 router = DefaultRouter()
-# router.register("user", views.UserMe, basename="user")
+router.register("currency", views.CurrencyViewSet, basename="currency")
 
 urlpatterns = [
 

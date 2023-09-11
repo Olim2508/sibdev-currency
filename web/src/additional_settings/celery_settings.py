@@ -9,6 +9,6 @@ CELERY_BEAT_SCHEDULE = {
     "populate_todays_rates_task": {
         "task": "main.tasks.populate_todays_rates_task",
         "schedule": crontab(hour="12", minute="0"),
-        # "schedule": crontab(minute="*/1"),
+        # "schedule": crontab(minute="*/2"),
     },
 }

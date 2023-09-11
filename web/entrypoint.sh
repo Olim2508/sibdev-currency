@@ -13,4 +13,7 @@ fi
 
 python manage.py migrate
 
+python manage.py create_super_user
+python manage.py populate_currencies
+
 exec "$@"
