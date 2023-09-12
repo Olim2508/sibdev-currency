@@ -15,8 +15,8 @@ from rest_framework.viewsets import GenericViewSet
 
 from main.models import ExchangeRateItem, Currency
 from main.paginators import BasePagination
-from main.schemas import ordering_rates_parameter
-from main.serializers import TrackedCurrencySerializer, RatesSerializer, AnalyticsRatesSerializer
+from main.schemas import ordering_rates_parameter, analytics_params, analytics_response
+from main.serializers import TrackedCurrencySerializer, RatesSerializer, AnalyticsRatesSerializer, CurrencySerializer
 from main.services import TrackedCurrencyService
 
 
@@ -37,8 +37,12 @@ class CurrencyViewSet(GenericViewSet):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    @swagger_auto_schema(methods=['GET'], operation_description="Получение аналитических данных по \
-                        котирумой валюте за период")
+    @swagger_auto_schema(
+        methods=['GET'],
+        operation_description="Получение аналитических данных по котирумой валюте за период",
+        manual_parameters=analytics_params,
+        responses=analytics_response
+    )
     @action(detail=False, methods=['GET'], url_path=r'(?P<id>\d+)/analytics', url_name="get_currency_analytics")
     def get_currency_analytics(self, request, id, *args, **kwargs):
         currency = get_object_or_404(Currency, id=id)
@@ -114,8 +118,10 @@ class RatesViewSet(mixins.ListModelMixin, GenericViewSet):
         return queryset
 
     @swagger_auto_schema(manual_parameters=[ordering_rates_parameter])
-    # @method_decorator(cache_page(60 * 15))  # кэшировать на 15 минут
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
 
 
+class CurrencyListViewSet(mixins.ListModelMixin, GenericViewSet):
+    serializer_class = CurrencySerializer
+    queryset = Currency.objects.all()

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import TrackedCurrency, ExchangeRateItem
+from .models import TrackedCurrency, ExchangeRateItem, Currency
 from .services import TrackedCurrencyService
 
 
@@ -33,3 +33,8 @@ class AnalyticsRatesSerializer(serializers.Serializer):
     percentage_ratio = serializers.DecimalField(max_digits=5, decimal_places=2)
 
 
+class CurrencySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Currency
+        fields = "__all__"

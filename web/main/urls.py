@@ -11,7 +11,7 @@ router.register("currency", views.CurrencyViewSet, basename="currency")
 router.register("rates", views.RatesViewSet, basename="rates")
 
 urlpatterns = [
-
+    path("available-currencies/list", views.CurrencyListViewSet.as_view({"get": "list"}), name="currency-list"),
 ]
 
 
