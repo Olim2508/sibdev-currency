@@ -17,13 +17,17 @@ class ExchangeRateItem(models.Model):
     def __str__(self):
         return f"{self.currency_name} - {self.date.strftime('%Y/%m/%d')} - {self.value}"
 
+    class Meta:
+        verbose_name = "Котировка"
+        verbose_name_plural = "Котировки"
+
 
 class Currency(models.Model):
     char_code = models.CharField(max_length=255)
     currency_name = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.char_code} - {self.currency_name}"
+        return f"{self.char_code} - {self.currency_name} - {self.id}"
 
     class Meta:
         verbose_name = "Котируемая валюта"
