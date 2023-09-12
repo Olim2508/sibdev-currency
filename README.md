@@ -41,7 +41,7 @@ docker-compose exec web python manage.py populate_rates_history
 КВ с установкой ПЗ
 * GET /rates/ - эндпоинт, возвращающий список последних загруженных
 котировок
-* GET / - эндпоинт аналитики
+* GET /currency/{id}/analytics/ - эндпоинт аналитики
 * юнит-тесты всех эндпоинтов
 
 #### Примечания!
