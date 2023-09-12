@@ -2,7 +2,7 @@
 
 ### Author [Olim Rakhmatov](https://www.linkedin.com/in/olim-rakhmatov/)
 
-#### Used technologies:
+### Используемые технологии:
 * Docker/Docker-compose environment
 * Celery worker
 * Celery beat для выполнения задач по расписанию
